@@ -1,8 +1,8 @@
 select
-    order_id,
-    user_name as user_id,
-    order_status,
-    DATETIME(order_date, "Europe/Paris") AS order_created_at,
+    order_id_x,
+    user_name as user_id_x,
+    order_status_x,
+    DATETIME(order_date, "Europe/Paris") AS order_created_at_x,
     DATETIME(order_approved_date, "Europe/Paris") AS order_approved_at,
     DATETIME(pickup_date, "Europe/Paris") AS picked_up_at,
     DATETIME(delivered_date, "Europe/Paris") AS delivered_at,
