@@ -1,4 +1,8 @@
 select
+    order_id_y,
+    user_name as user_id_y,
+    order_status_y,
+    DATETIME(order_date, "Europe/Paris") AS order_created_at_y,
     order_id_x,
     user_name as user_id_x,
     order_status_x,
