@@ -1,96 +1,98 @@
 version: 2
 
+
 sources:
   - name: local_bike
     schema: local_bike
     tables:
       - name: stg_local_bike_brands
-      - description: This table have information about the brands
-      - columns:
+        description: "This table contains information about the brands."
+        columns:
           - name: brand_id
-          - description: This is the unique identifier of brand
-          - tests:
-              - unique 
-              - not_null 
+            description: "Unique identifier of the brand."
+            tests:
+              - unique
+              - not_null
           - name: brand_name
-          - description: This is the name of brand
+            description: "The name of the brand."
+
       - name: stg_local_bike_categories
-      - description: This table have informations about the categorie of product
-      - columns:
+        description: This table have informations about the categorie of product
+        columns:
           - name: category_id
-          - description: This is the unique identifier of category
-          - tests:
+            description: This is the unique identifier of category
+            tests:
               - unique 
               - not_null
           - name: category_name
-          - description: This is the name of category
+            description: This is the name of category
       - name: stg_local_bike_customers
-      - description: This table have informations about customers 
-      - columns:
+        description: This table have informations about customers 
+        columns:
             - name: customer_id
-            - description: This is unique identifier of customers
-            - tests:
+              description: This is unique identifier of customers
+              tests:
                   - unique 
                   - not_null
             - name: firs_name
-            - description: This is the first name of customer
+              description: This is the first name of customer
             - name: last_name
-            - description: This is the last name of customer
+              description: This is the last name of customer
             - name: phone
-            - description: This is the number phone of customer
+              description: This is the number phone of customer
             - name: email
-            - description: This is the email of customer
+              description: This is the email of customer
             - name: street
-            - description: This is the name of street in the adresse of customer
+              description: This is the name of street in the adresse of customer
             - name: city
-            - description: This is the name of city adresse of customer
+              description: This is the name of city adresse of customer
             - name: state
-            - description: This is the state adresse of customer
+              description: This is the state adresse of customer
             - name: zip_code
-            - description: This is the zip code of adresse of customer
+              description: This is the zip code of adresse of customer
       - name: stg_local_bike_order
-      - description: This table have summerize informations about order 
-      - columns:
+        description: This table have summerize informations about order 
+        columns:
             - name: order_id
-            - description: Primary key This is unique identifier of order 
+              description: Primary key This is unique identifier of order 
             - name: customer_id
-            - description: Foreign key linking the customer and his order
-            - tests:
+              description: Foreign key linking the customer and his order
+              tests:
                   - relationships:
                         field: customer_id
                         to: ref('stg_local_bike_customers')
             - name: order_status
-            - description: This is the status of the order
-            - tests:
+              description: This is the status of the order
+              tests:
                 - accepted_values: 
                     values: ['Pending', 'shipped', 'Processing', 'Canceled']
       - name: stg_local_bike_order_items
-      - description: This table have informations about details of order 
-      - columns:
+        description: This table have informations about details of order 
+        columns:
             - name: order_id 
-            - description: Foreign key linking the order item to the corresponding order
-            - tests:
+              description: Foreign key linking the order item to the corresponding order
+              tests:
                   - relationships:
                           field: order_id
                           to: ref('stg_local_bike_order')
             - name: item_id 
-            - description: Primary key, unique identifier for each order item
-            - tests:
+              description: Primary key, unique identifier for each order item
+              tests:
                 - unique 
                 - not_null 
             - name: product_id
-            - description: Foreign key linking the order item to the corresponding product
+              description: Foreign key linking the order item to the corresponding product
       - name: stg_local_bike_products
-      - description: This table have information about products
-      - columns:
+        description: This table have information about products
+        columns:
             - name: product_id
-            - description: Primary key, unique identifier for each product
-            - tests:
+              description: Primary key, unique identifier for each product
+              tests:
                 - unique 
                 - not_null 
             - name: brand_id
-            - description: Foreign key linking the product to the corresponding brand
-            - tests:
+              description: Foreign key linking the product to the corresponding brand
+              tests:
                   - relationships:
                           field: brand_id
                           to: ref('stg_local_bike_brands')
