@@ -4,6 +4,6 @@ This model return a combined view containing information about each item ordered
 - **order_id** et **order_item_id** : Each order (order_id) can have several individual items (order_item_id)..
 - **total_order_item_amount** This is the total price after discounts.
 
-It provides a comprehensive view of each order, allowing for easy analysis of order performance, customer demographics, and feedback.
+useful for analysing sales at the level of the items ordered, while at the same time having an overview of the associated order
 
 {% enddocs %}

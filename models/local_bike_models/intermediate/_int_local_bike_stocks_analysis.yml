@@ -1,10 +1,10 @@
 version: 2
 
 models:
-  - name: int_local_bike_orders
-    description: '{{ doc("int_local_bike_orders") }}'
+  - name: int_local_bike_stocks_analysis
+    description: '{{ doc("int_local_bike_stocks_analysis") }}'
     columns:
-      - name: order_id
+      - name: store_id
         description: "Primary key, unique identifier for each order."
         tests:
           - unique
