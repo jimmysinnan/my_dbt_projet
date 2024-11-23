@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'my_first_dbt_project'
+name: 'my_dbt_projet'
 version: '1.0.0'
 config-version: 2
 
@@ -40,7 +40,7 @@ models:
       relation: true
       columns: true
       
-  my_first_dbt_project:
+  my_dbt_projet:
 
     staging:
       materialized: view
@@ -49,7 +49,7 @@ models:
       sales_database:
         schema: stg_sales_database
       google_sheets:
-        schema: stg_google_sheets
+        schema: stg_google_sheets     
 
     intermediate:
       materialized: view
@@ -60,4 +60,4 @@ models:
     mart:
       schema: mart
       materialized: table
-
+        
