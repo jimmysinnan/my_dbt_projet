@@ -1,8 +1,8 @@
 version: 2
 
 models:
-  - name: int_local_bike_order
-    description: '{{ doc("int_local_bike_order") }}'
+  - name: int_local_bike_orders
+    description: '{{ doc("int_local_bike_orders") }}'
     columns:
       - name: order_id
         description: "Primary key, unique identifier for each order."
