@@ -11,7 +11,7 @@ SELECT
     order_created_at,
     order_shipped_at,
     SUM(total_order_item_amount) as total_order_amount,
-    SUM(item_quantity), total_items,
+    SUM(item_quantity) as total_items,
     count(discount(product_id)) as total_distinct_items,
     store_id,
     staff_id
