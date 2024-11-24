@@ -12,7 +12,7 @@ SELECT
     order_shipped_at,
     SUM(total_order_item_amount) as total_order_amount,
     SUM(item_quantity) as total_items,
-    count(discount(product_id)) as total_distinct_items,
+    count(DISTINCT(product_id)) as total_distinct_items,
     store_id,
     staff_id
 FROM {{ref('int_local_bike_order_items') }}
@@ -32,9 +32,10 @@ select oi.order_id,
     c.city,
     c.state,
     c.zip_code,
-    u.user_state,
     oi.order_created_at,
     oi.order_shipped_at,
+    oi.store_id,
+    oi.staff_id,
     coalesce(oi.total_order_amount,0) as total_order_amount,
     coalesce(oi.total_items,0) as total_items,
     coalesce(oi.total_distinct_items,0) as total_distinct_items
