@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: mrt_local_bike_stocks_analysis
+    description: '{{ doc("mrt_local_bike_stocks_analysis") }}'
+    columns:
+      - name: total_stock_quantity
+        description: This is total quantity in stock
+      - name: stock_status
+        description:  This is the status of niveau stock
+        tests:
+          - accepted_values:
+              values:
+                - ['Critical','Vigilant','Sufficient']
+      - name: total_stock_value
+        description:  This is the value potential of the stock 

@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: mrt_local_bike_stock_cover_daily
+    description: '{{ doc("mrt_local_bike_stock_cover_daily") }}'
+    columns:
+      - name: stock_quantity
+        description: This is total quantity in stock
+      - name: avg_daily_quantity_sold
+        description:  This is the average quantity sold per day
+      - name: stock_coverage_days
+        description:  This is a measure of how many days current stock can cover average daily sales
