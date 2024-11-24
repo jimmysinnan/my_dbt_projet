@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: mrt_local_bike_staff_sales_activities
+    description: '{{ doc("mrt_local_bike_staff_sales_activities") }}'
+    columns:
+      - name: report_date
+        description: This is the order creation date
+      - name: total_revenue
+        description:  This is the turnover, calculate with the discount
+      - name: number_total_orders
+        description:  This is the number of order by day, store and state
+      - name: number_total_customers
+        description: This is the number total of unique customer 
+      - name: order_status
+        description: This is the status of order 
+      - name: highest_order_amount
+        description: The highest amount for an order
