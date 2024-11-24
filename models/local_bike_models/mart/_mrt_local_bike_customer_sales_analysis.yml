@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: mrt_local_bike_customer_sales_analysis
+    description: '{{ doc("mrt_local_bike_customer_sales_analysis") }}'
+    columns:
+      - name: customer_category
+        description: This is the categorie of classification about customer loyalty ( total amount spent & total order )
+      - name: avg_time_between_purchase
+        description:  This is the Average purchase frequency in days.
+      - name: number_total_orders
+        description:  This is the number of order by day, store and state
+      - name: total_amount_spent
+        description: This is the amount total spend
+      - name: highest_purchase
+        description: This is the highest amount purchase of the customer
+      
