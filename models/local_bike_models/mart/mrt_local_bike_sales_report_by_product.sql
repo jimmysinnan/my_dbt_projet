@@ -3,7 +3,8 @@
 ) }}
 
 SELECT
-    DATE_TRUNC(oi.order_created_at, month) AS report_month,
+    oi.order_created_at AS report_date,
+    FORMAT_TIMESTAMP('%Y-%m', DATE_TRUNC(oi.order_created_at, MONTH)) AS report_month,
     s.store_name,
     s.state,
     oi.category_name,
@@ -18,11 +19,11 @@ INNER join {{ref('stg_local_bike_stores')}} as s
 on 
     s.store_id = oi.store_id
 group by
-    report_month,
+    report_date,
     s.store_name,
     s.state,
     oi.order_status,
     oi.category_name,
     oi.product_name,
     oi.model_year
-order by report_month desc 
+order by report_date desc 
