@@ -8,25 +8,35 @@ WITH orders_summary AS (
         COUNT(DISTINCT order_id) AS total_orders
     FROM {{ ref('int_local_bike_order') }}
     GROUP BY customer_id
-)
+), details_customers as (
+
+select
+    customer_id,
+    city,
+    state,
+from {{ref('stg_local_bike_customers')}}
+
+) 
 
 SELECT
     os.customer_id,
-    cust.city,
-    cust.state,
+    c.city,
+    c.state,
     os.total_amount_spent,
     os.highest_purchase,
     os.total_items,
     os.total_distinct_items,
     os.total_orders,
-    p.favorite_product_id,
+    fp.favorite_product_id,
     p.product_name,
     b.brand_name
 FROM orders_summary AS os
-INNER JOIN {{ ref('stg_local_bike_customers') }} cust
-    ON cust.customer_id = os.customer_id
-LEFT JOIN {{ ref('int_local_bike_customers_favorite_products') }} p
-    ON os.customer_id = p.customer_id
+INNER JOIN details_customers as c
+    on c.customer_id = os.customer_id
+LEFT JOIN {{ ref('int_local_bike_customers_favorite_products') }} fp
+    ON os.customer_id = fp.customer_id
 LEFT JOIN {{ ref('stg_local_bike_brands') }} AS b
-    ON b.brand_id = p.brand_id
+    ON b.brand_id = fp.brand_id
+LEFT JOIN {{ ref('stg_local_bike_products')}} as p 
+    on p.brand_id=b.brand_id
 
