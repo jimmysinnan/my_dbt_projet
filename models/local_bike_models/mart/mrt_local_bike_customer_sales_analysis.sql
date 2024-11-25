@@ -3,19 +3,6 @@
 ) }}
 
 select
-    CASE
-    -- Catégorie Gold : dépenses élevées et nombre de commandes élevé
-    WHEN c.total_amount_spent >= 10000 AND c.total_orders >= 50 THEN 'Gold'
-    
-    -- Catégorie Argent : dépenses modérées ou nombre moyen de commandes
-    WHEN (c.total_amount_spent BETWEEN 5000 AND 9999 AND c.total_orders BETWEEN 20 AND 49) THEN 'Argent'
-    
-    -- Catégorie Bronze : faible dépense ou faible nombre de commandes
-    WHEN c.total_amount_spent < 5000 OR c.total_orders < 20 THEN 'Bronze'
-    
-    -- Cas par défaut (optionnel)
-    ELSE 'Non Classé'
-    END AS customer_category, 
     c.customer_id,
     c.city,
     c.state,
@@ -35,7 +22,6 @@ LEFT JOIN {{ref('int_loca_bike_avg_time_between_order')}} as avgt
 on 
   avgt.customer_id = c.customer_id
 GROUP by 
-customer_category,
 c.customer_id,
 c.city,
 c.state,
