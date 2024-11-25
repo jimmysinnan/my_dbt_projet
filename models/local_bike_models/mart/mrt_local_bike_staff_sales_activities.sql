@@ -11,10 +11,10 @@ SELECT
     oi.staff_id,
     oi.category_name,
     oi.order_status,
-    ROUND(SUM(oi.total_order_item_amount), 2) as total_revenue,
-    ROUND(max(oi.total_order_item_amount),2) as highest_order_amount,
-    COUNT(distinct oi.order_id) as number_total_orders,
-    count(distinct oi.customer_id) as number_total_customer
+    ROUND(coalesce(SUM(oi.total_order_item_amount),0), 2) as total_revenue,
+    ROUND(coalesce(max(oi.total_order_item_amount),0),2) as highest_order_amount,
+    coalesce(COUNT(distinct oi.order_id),0) as number_total_orders,
+    coalesce(count(distinct oi.customer_id),0) as number_total_customer
 FROM {{ ref('int_local_bike_order_items')}} as oi 
 INNER join {{ref('stg_local_bike_stores')}} as s
 on 
