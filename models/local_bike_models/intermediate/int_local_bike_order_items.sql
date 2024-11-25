@@ -13,6 +13,7 @@ From {{ ref('stg_local_bike_categories')}}
 
 SELECT
     category_id,
+    brand_id,
     product_id,
     product_name,
     model_year
@@ -28,6 +29,7 @@ SELECT
     model_year,
     rc.category_id,
     rc.category_name,
+    rp.brand_id,
     oi.quantity AS item_quantity,
     (oi.quantity * oi.list_price * (1 - oi.discount)) AS total_order_item_amount,
     o.customer_id,
