@@ -28,6 +28,7 @@ group by
     oi.order_status,
     oi.category_id,
     oi.category_name,
+    oi.brand_id,
     oi.product_name,
     oi.product_id,
     oi.model_year
