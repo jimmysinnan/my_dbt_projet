@@ -23,8 +23,8 @@ select
     c.brand_name,
     c.product_name,
     avgt.avg_days_between_orders as avg_time_between_purchase,
-    ROUND(coalesce(SUM(c.total_amount_spent),0),2) as total_amount_spent,
-    ROUND(coalesce(SUM(c.highest_purchase),0),2) as highest_purchase,
+    ROUND(SUM(c.total_amount_spent),2) as total_amount_spent,
+    ROUND(SUM(c.highest_purchase),2) as highest_purchase,
     coalesce(sum(c.total_distinct_items),0) as total_distinct_items,
     coalesce(sum(c.total_orders),0) as total_orders,
     o.order_status
