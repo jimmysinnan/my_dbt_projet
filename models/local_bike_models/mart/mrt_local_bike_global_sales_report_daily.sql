@@ -7,10 +7,10 @@ SELECT
     o.store_id,
     o.state,
     o.order_status,
-    ROUND(coalesce(SUM(o.total_order_amount),0), 2) as total_revenue,
+    ROUND(SUM(o.total_order_amount), 2) as total_revenue,
     coalesce(COUNT(distinct o.order_id),0) as number_total_orders,
-    ROUND(coalesce(avg(o.total_order_amount),0), 2) as panier_moyen,
-    ROUND(coalesce(max(o.total_order_amount),0),2) as highest_order_amount,
+    ROUND(avg(o.total_order_amount), 2) as panier_moyen,
+    ROUND(max(o.total_order_amount),2) as highest_order_amount,
     coalesce(count(distinct o.customer_id),0) as number_total_customer
 FROM {{ ref('int_local_bike_order')}} as o 
 group by
