@@ -7,7 +7,9 @@ SELECT
     FORMAT_TIMESTAMP('%Y-%m', DATE_TRUNC(oi.order_created_at, MONTH)) AS report_month,
     s.store_name,
     s.state,
+    oi.category_id,
     oi.category_name,
+    oi.product_id,
     oi.product_name,
     oi.model_year,
     oi.order_status,
@@ -23,7 +25,9 @@ group by
     s.store_name,
     s.state,
     oi.order_status,
+    oi.category_id,
     oi.category_name,
     oi.product_name,
+    oi.product_id,
     oi.model_year
 order by report_date desc 
