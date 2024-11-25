@@ -8,8 +8,7 @@ select
     WHEN c.total_amount_spent >= 10000 AND c.total_orders >= 50 THEN 'Gold'
     
     -- Catégorie Argent : dépenses modérées ou nombre moyen de commandes
-    WHEN (c.total_amount_spent BETWEEN 5000 AND 9999 AND c.total_orders BETWEEN 20 AND 49)
-         OR (c.total_amount_spent >= 10000 AND c.total_orders < 50) THEN 'Argent'
+    WHEN (c.total_amount_spent BETWEEN 5000 AND 9999 AND c.total_orders BETWEEN 20 AND 49) THEN 'Argent'
     
     -- Catégorie Bronze : faible dépense ou faible nombre de commandes
     WHEN c.total_amount_spent < 5000 OR c.total_orders < 20 THEN 'Bronze'
